@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ping Pong App</title>
+</head>
+<body>
+  <h1>Ping Pong App</h1>
+  <button id="ping-button">Ping</button>
+  <div id="ping-result"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    const pingButton = document.getElementById('ping-button');
+    const pingResult = document.getElementById('ping-result');
+
+    pingButton.addEventListener('click', async () => {
+      try {
+        const response = await axios.get('/ping');
+        pingResult.textContent = response.data;
+      } catch (error) {
+        console.error(error);
+        pingResult.textContent = 'Error occurred';
+      }
+    });
+  </script>
+</body>
+</html>

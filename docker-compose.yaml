@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  fo:
+    image: ping-pong-app
+    ports:
+      - "4000:4000"
+    depends_on:
+      - bo
+    networks:
+      - my-network
+
+  bo:
+    image: ping-api
+    ports:
+      - "3000:3000"
+    networks:
+      - my-network
+
+networks:
+  my-network:
